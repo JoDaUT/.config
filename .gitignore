@@ -8,7 +8,8 @@
 !README.md
 
 # Whitelist
-!alacrity/
+!alacritty/
+!alacritty/*
 !nvim/
 !nvim/*
 
