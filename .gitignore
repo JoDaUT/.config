@@ -1,0 +1,19 @@
+# Ignore everything in the repository
+*
+
+# But do not ignore the .gitignore file itself
+!.gitignore
+
+# Allow the README file
+!README.md
+
+# Whitelist
+!alacrity/
+!nvim/
+
+# Allow Git to enter the zed folder
+!zed/
+# Ignore everything inside the zed folder
+zed/*
+# Whitelist only the settings file
+!zed/settings.json
