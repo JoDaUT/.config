@@ -9,9 +9,9 @@
 
 # Whitelist
 !alacritty/
-!alacritty/*
+!alacritty/**/*
 !nvim/
-!nvim/*
+!nvim/**/*
 
 # Allow Git to enter the zed folder
 !zed/
