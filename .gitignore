@@ -8,12 +8,19 @@
 !README.md
 
 # Whitelist
+
 !alacritty/
 !alacritty/**/*
+
 !nvim/
 !nvim/**/*
+
 !lazygit/
 !lazygit/**/*
+
+!opencode/
+!opencode/skills/
+!opencode/skills/**/*
 
 # Allow Git to enter the zed folder
 !zed/
