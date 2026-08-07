@@ -11,6 +11,14 @@ return {
         explorer = {
           hidden = true,
           ignored = true,
+          win = {
+            list = {
+              wo = {
+                number = true,
+                relativenumber = true,
+              },
+            },
+          },
         },
         files = {
           hidden = true,
