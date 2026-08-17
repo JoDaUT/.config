@@ -36,3 +36,5 @@ zed/*
 
 # install script
 !install.sh
+
+!tui.json
