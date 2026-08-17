@@ -20,3 +20,5 @@ done
 
 # tmux config
 ln -s "$SRC/.tmux.conf" "$HOME"
+
+ln -s "$SRC/.bashrc" "$HOME"
