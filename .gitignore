@@ -28,3 +28,9 @@
 zed/*
 # Whitelist only the settings file
 !zed/settings.json
+
+# tmux
+!.tmux.conf
+
+# install script
+!install.sh
