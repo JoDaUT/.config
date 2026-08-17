@@ -21,6 +21,8 @@
 !opencode/
 !opencode/skills/
 !opencode/skills/**/*
+!opencode/plugin/
+!opencode/plugin/**/*
 
 # Allow Git to enter the zed folder
 !zed/
