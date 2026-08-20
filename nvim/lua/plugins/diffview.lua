@@ -16,5 +16,17 @@ return {
   keys = {
     { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" },
     { "<leader>gD", "<cmd>DiffviewClose<cr>", desc = "Diffview Close" },
+    { "<leader>gF", "<cmd>DiffviewFileHistory<cr>", desc = "Diffview File History" },
+    {
+      "<leader>gc",
+      function()
+        vim.ui.input({ prompt = "Compare against: " }, function(ref)
+          if ref and ref ~= "" then
+            vim.cmd("DiffviewOpen " .. ref)
+          end
+        end)
+      end,
+      desc = "Diffview Compare",
+    },
   },
 }
