@@ -1,24 +1,32 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SRC="$HOME/.config.source"
-DST="$HOME/.config"
+DOTFILES="$(cd "$(dirname "$0")" && pwd)"
 
-for dir in "$SRC"/*/; do
+# Copy config directory contents into ~/.config/
+for dir in "$DOTFILES"/*/; do
   name=$(basename "$dir")
-  target="$DST/$name"
+  [ "$name" = ".git" ] && continue
 
-  if [ -L "$target" ]; then
-    echo "skip (symlink exists): $name"
-  elif [ -e "$target" ]; then
-    echo "skip (real dir/file exists): $name"
-  else
-    ln -s "$dir" "$target"
-    echo "linked: $name"
-  fi
+  target="$HOME/.config/$name"
+
+  mkdir -p "$target"
+  echo "syncing: $name -> $target"
+  cp -R "$dir"/. "$target"/
 done
 
-# tmux config
-ln -s "$SRC/.tmux.conf" "$HOME"
+# Copy dotfiles to $HOME
+for file in "$DOTFILES"/.*; do
+  [ -f "$file" ] || continue
+  basename=$(basename "$file")
+  [ "$basename" = "." ] && continue
+  [ "$basename" = ".." ] && continue
+  [ "$basename" = ".git" ] && continue
+  [ "$basename" = ".gitignore" ] && continue
 
-ln -s "$SRC/.bashrc" "$HOME"
+  target="$HOME/$basename"
+  echo "copying: $basename -> $target"
+  cp "$file" "$target"
+done
+
+echo "Done."
