@@ -20,13 +20,29 @@ return {
     {
       "<leader>gc",
       function()
-        vim.ui.input({ prompt = "Compare against: " }, function(ref)
+        vim.ui.input({ prompt = "Compare HEAD against: " }, function(ref)
           if ref and ref ~= "" then
-            vim.cmd("DiffviewOpen " .. ref)
+            vim.cmd("DiffviewOpen " .. ref .. "...HEAD --imply-local")
           end
         end)
       end,
-      desc = "Diffview Compare",
+      desc = "Diffview Compare Against",
+    },
+    {
+      "<leader>gC",
+      function()
+        vim.ui.input({ prompt = "Compare commits" }, function(input)
+          if input and input ~= "" then
+            local a, b = input:match("^(%S+)%s+(%S+)$")
+            if a and b then
+              vim.cmd("DiffviewOpen " .. a .. ".." .. b)
+            else
+              vim.notify("Enter two commits, e.g. abc123 def456", vim.log.levels.WARN)
+            end
+          end
+        end)
+      end,
+      desc = "Diffview Compare Commits",
     },
   },
 }
